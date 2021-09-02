@@ -6,39 +6,80 @@ import java.util.Stack;
 public class Solution {
 	
 	public static void main(String[] args) {
-		System.out.print(isValid("){"));
+		System.out.print(new Solution().isValid("()"));
 	}
 	
-	public static boolean isValid(String s) {
-		Stack<Character> stack = new Stack<Character>();
-		if(s.length() % 2 > 0 || s.length() == 0) {
+	/**改善可讀性
+	 * @param s
+	 * @return
+	 */
+	public boolean isValid(String s) {
+		if(s.length() % 2 > 0) {
 			return false;
 		}
-		for(char c : s.toCharArray()) {
-			if(c == '}') {
-				if(!stack.empty() && stack.pop() == '{') {
-					continue;
-				}else {
-					return false;
-				}
-			}else if(c == ']') {
-				if(!stack.empty() && stack.pop() == '[') {
-					continue;
-				}else {
-					return false;
-				}
-			}else if(c== ')') {
-				if(!stack.empty() && stack.pop() == '(') {
-					continue;
-				}else {
-					return false;
-				}
+		
+		Stack<Character> stack = new Stack<>();
+		for(Character ch : s.toCharArray()) {
+			if(ch == '{' || ch == '[' || ch == '(') {
+				stack.push(ch);
 			}else {
-				stack.push(c);
+				if(stack.empty() || !check(stack.pop(), ch)) {
+					return false;
+				}
 			}
 		}
-		
-		return stack.size() == 0 ? true : false;
-    }
-
+		if(!stack.isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+	
+	private boolean check(Character pop, Character right) {
+		if(right == ')' && pop == '(') {
+			return true;
+		}else if(right == ']' && pop == '[') {
+			return true;
+		}else if(right == '}' && pop == '{') {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	/**之前寫的解法
+	 * @param s
+	 * @return
+	 */
+//	public static boolean isValid(String s) {
+//		Stack<Character> stack = new Stack<Character>();
+//		if(s.length() % 2 > 0 || s.length() == 0) {
+//			return false;
+//		}
+//		for(char c : s.toCharArray()) {
+//			if(c == '}') {
+//				if(!stack.empty() && stack.pop() == '{') {
+//					continue;
+//				}else {
+//					return false;
+//				}
+//			}else if(c == ']') {
+//				if(!stack.empty() && stack.pop() == '[') {
+//					continue;
+//				}else {
+//					return false;
+//				}
+//			}else if(c== ')') {
+//				if(!stack.empty() && stack.pop() == '(') {
+//					continue;
+//				}else {
+//					return false;
+//				}
+//			}else {
+//				stack.push(c);
+//			}
+//		}
+//		
+//		return stack.size() == 0 ? true : false;
+//    }
 }
