@@ -29,7 +29,7 @@ public class Solution {
 		result.add(new ArrayList<>(path));
 		for(int i = startIndex; i < nums.length; i++) {
 			path.push(nums[i]);
-			bracket(nums, startIndex + 1);
+			bracket(nums, i + 1);
 			path.removeLast();
 		}
 	}

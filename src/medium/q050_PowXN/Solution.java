@@ -7,7 +7,7 @@ public class Solution {
 	public double myPow(double x, int n) {
 		if(n == 0) {
 			return 1;
-		}else if (n == Integer.MIN_VALUE){
+		} if (n == Integer.MIN_VALUE){
 			x = x * x;
 			n = n/2;
 		}else if (n < 0) {
