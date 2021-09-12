@@ -29,7 +29,9 @@ public class Solution {
 				count ++;
 			}else if(majority != nums[i]) {
 				count--;
-			}else if (count == 0) {
+			}
+			
+			if (count == 0) {
 				majority = nums[i];
 				count++;
 			}
