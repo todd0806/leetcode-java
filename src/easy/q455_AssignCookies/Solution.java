@@ -13,30 +13,53 @@ import java.util.Arrays;
 public class Solution {
 
 	public static void main(String[] args) {
-		int[] greed = { 1, 2 };
-		int[] cookie = { 1, 2, 3 };
-		System.out.print(findContentChildren(greed, cookie));
+		int[] greed = { 1, 2, 3 };
+		int[] cookie = { 1, 1 };
+		System.out.print(new Solution().findContentChildren(greed, cookie));
 	}
 	
-	public static int findContentChildren(int[] greed, int[] cookie) {
-		if(greed == null || greed.length == 0) {
-			return 0;
-		}
-		
-		if(cookie == null || cookie.length == 0) {
+	public int findContentChildren(int[] greed, int[] cookie) {
+		if(greed == null || greed.length == 0 || cookie == null || cookie.length == 0) {
 			return 0;
 		}
 		
 		Arrays.sort(greed);
 		Arrays.sort(cookie);
-		int satisfyiedChildren = 0;
-		int cookieIndex = 0;
-		while(cookieIndex < cookie.length && satisfyiedChildren < greed.length) {
-			if(cookie[cookieIndex] >= greed[satisfyiedChildren]) {
-				satisfyiedChildren++;
+		int content = 0;
+		int cookieIndex = cookie.length - 1;
+		int greedIndex = greed.length - 1;
+		while(greedIndex >= 0 && cookieIndex >= 0) {
+			if(cookie[cookieIndex] >= greed[greedIndex]) {
+				content ++;
+				cookieIndex--;
+				greedIndex--;
+			}else {
+				greedIndex--;
 			}
-			cookieIndex++;
 		}
-		return satisfyiedChildren;
+		return content;
 	}
+	
+	
+//	public static int findContentChildren(int[] greed, int[] cookie) {
+//		if(greed == null || greed.length == 0) {
+//			return 0;
+//		}
+//		
+//		if(cookie == null || cookie.length == 0) {
+//			return 0;
+//		}
+//		
+//		Arrays.sort(greed);
+//		Arrays.sort(cookie);
+//		int satisfyiedChildren = 0;
+//		int cookieIndex = 0;
+//		while(cookieIndex < cookie.length && satisfyiedChildren < greed.length) {
+//			if(cookie[cookieIndex] >= greed[satisfyiedChildren]) {
+//				satisfyiedChildren++;
+//			}
+//			cookieIndex++;
+//		}
+//		return satisfyiedChildren;
+//	}
 }
