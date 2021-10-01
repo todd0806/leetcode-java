@@ -1,4 +1,4 @@
-package medium.q049GroupAnagrams;
+package medium.q049_GroupAnagrams;
 
 import java.util.ArrayList;
 import java.util.Arrays;

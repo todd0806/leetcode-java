@@ -1,4 +1,4 @@
-package easy.q069SqrtX;
+package easy.q069_SqrtX;
 
 /**
  * @author Todd

@@ -1,4 +1,4 @@
-package medium.q153FindMinimuminRotatedSortedArray;
+package medium.q153_FindMinimuminRotatedSortedArray;
 
 /**
  * @author Todd

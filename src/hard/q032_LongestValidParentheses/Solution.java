@@ -1,4 +1,4 @@
-package hard.q032LongestValidParentheses;
+package hard.q032_LongestValidParentheses;
 
 import java.util.Stack;
 
