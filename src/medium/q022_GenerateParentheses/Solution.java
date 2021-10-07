@@ -12,6 +12,7 @@ public class Solution {
 		new Solution().generateParenthesis(3);
 	}
 	
+	// DFS 
 	private List<String> list = new ArrayList<>();
 	public List<String> generateParenthesis(int n) {
 		generate(0, 0, n, "");
@@ -39,6 +40,9 @@ public class Solution {
 		
 		//reverse states
 	}
+	
+	// DFS or BFS
+	// https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/
 	
 	
 }

@@ -11,9 +11,7 @@ import java.util.List;
 public class Solution {
 	
 	//https://leetcode-cn.com/problems/n-queens/solution/dai-ma-sui-xiang-lu-51-n-queenshui-su-fa-2k32/
-	
 	private List<List<String>> result = new ArrayList<>();
-	
 	public List<List<String>> solveNQueens(int n) {
 		char[][] board = new char[n][n];
 		for(char[] c: board) {
