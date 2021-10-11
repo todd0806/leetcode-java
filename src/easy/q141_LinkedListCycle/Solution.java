@@ -8,6 +8,7 @@ package easy.q141_LinkedListCycle;
  * 
  */
 public class Solution {
+	// https://labuladong.gitbook.io/algo/mu-lu-ye/lian-biao-ji-qiao#he-bing-liang-ge-you-xu-lian-biao
 	public boolean hasCycle(ListNode head) {
 		if(head == null) {
 			return false;
