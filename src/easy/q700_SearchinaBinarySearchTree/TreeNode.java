@@ -1,4 +1,4 @@
-package hard.q297SerializeAndDeserializeBinaryTree;
+package easy.q700_SearchinaBinarySearchTree;
 
 public class TreeNode {
 	int val;

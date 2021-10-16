@@ -12,33 +12,26 @@ public class Solution {
 		new Solution().generateParenthesis(3);
 	}
 	
-	// DFS 
-	private List<String> list = new ArrayList<>();
-	public List<String> generateParenthesis(int n) {
-		generate(0, 0, n, "");
-		return list;
+	// dfs
+	List<String> result = new ArrayList<>();
+	public List<String> generateParenthesis(int n){
+		dfs(0, 0, n, "");
+		return result;
 	}
 	
-	private void generate(Integer left, Integer right, Integer maxLevel, String s) {
-		// terminator
-		if(left == maxLevel && right == maxLevel) {
-			System.out.println(s);
-			list.add(s);
-			return;
+	private void dfs(int left, int right, int n, String s) {
+		if(left == n && right == n ) {
+			result.add(s);
+//			System.out.println(s);
 		}
 		
-		//procee current logic left, right
-		
-		//drilldown
-		if(left < maxLevel) {
-			generate(left  + 1, right, maxLevel, s + "(");
+		if(left < n) {
+			dfs(left + 1, right, n, s + ("("));
 		}
 		
-		if(right < left ) {
-			generate(left, right  + 1, maxLevel, s + ")");
+		if(left > right) {
+			dfs(left, right + 1, n, s + (")") );
 		}
-		
-		//reverse states
 	}
 	
 	// DFS or BFS

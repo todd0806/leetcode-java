@@ -3,6 +3,7 @@ package medium.q046_Permutations;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Todd https://leetcode.com/problems/permutations/
@@ -13,7 +14,6 @@ public class Solution {
 	 * @param nums
 	 * @return
 	 */
-	
 	private List<List<Integer>> result = new ArrayList<>();
 	private LinkedList<Integer> path = new LinkedList<>();
 	

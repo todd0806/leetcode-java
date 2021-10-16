@@ -13,25 +13,33 @@ package easy.q283_MoveZeroes;
  * 4.五毒神掌 
  */
 public class Solution {
-	public static void main(String[] args) {
-		
-	}
-	
-	public static void moveZeroes(int[] nums) {
-		int totalZeroCount = 0;
-		int slowIndex = 0;
-		for(int num :nums) {
-			if(num != 0) {
-				nums[slowIndex] = num;
-				slowIndex++;
-			}else {
-				totalZeroCount++;
+
+	public void moveZeroes(int[] nums) {
+		int zeroLocation = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != 0) {
+				nums[zeroLocation] = nums[i];
+				nums[i] = zeroLocation == i ? nums[i] : 0;
+				zeroLocation++;
 			}
 		}
-		
-		for(int i = 0; i < totalZeroCount; i++) {
-			nums[nums.length - 1 - i] = 0;
-		}
-		
 	}
+	
+//	public static void moveZeroes(int[] nums) {
+//		int totalZeroCount = 0;
+//		int slowIndex = 0;
+//		for(int num :nums) {
+//			if(num != 0) {
+//				nums[slowIndex] = num;
+//				slowIndex++;
+//			}else {
+//				totalZeroCount++;
+//			}
+//		}
+//		
+//		for(int i = 0; i < totalZeroCount; i++) {
+//			nums[nums.length - 1 - i] = 0;
+//		}
+//		
+//	}
 }

@@ -7,6 +7,29 @@ import java.util.Stack;
  */
 public class Solution {
 	
+//	https://leetcode-cn.com/problems/validate-binary-search-tree/solution/dai-ma-sui-xiang-lu-dai-ni-xue-tou-er-ch-9cc0/
+	long max = Long.MIN_VALUE;
+	
+	public boolean isValidBST(TreeNode root) {
+		return traverse(root);
+	}
+	
+	private boolean traverse(TreeNode root) {
+		if (root == null) {
+			return true;
+		}
+	
+		boolean left = traverse(root.left);
+		if (max < root.val) {
+			max = root.val;
+		} else {
+			return false;
+		}
+		boolean right = traverse(root.right);
+		return left && right;
+	}
+
+	
 	/**方法一 迭代
 	 * BST->中序-->遞增，所以中間有值比前一個值小，就代表不是BST
 	 * @param root
@@ -40,20 +63,20 @@ public class Solution {
 	 * @param root
 	 * @return
 	 */
-	public boolean isValidBST(TreeNode root) {
-		return validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
-	}
-	
-	private boolean validate(TreeNode root, long lower, long upper) {
-		if(root == null) {
-			return true;
-		}
-		
-		if(root.val <= lower || root.val >= upper) {
-			return false;
-		}
-		
-		return validate(root.left, lower, root.val) && validate(root.right, root.val, upper); 
-	}
+//	public boolean isValidBST(TreeNode root) {
+//		return validate(root, Long.MIN_VALUE, Long.MAX_VALUE);
+//	}
+//	
+//	private boolean validate(TreeNode root, long lower, long upper) {
+//		if(root == null) {
+//			return true;
+//		}
+//		
+//		if(root.val <= lower || root.val >= upper) {
+//			return false;
+//		}
+//		
+//		return validate(root.left, lower, root.val) && validate(root.right, root.val, upper); 
+//	}
 	
 }
