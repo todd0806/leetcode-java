@@ -9,41 +9,67 @@ public class Solution {
 		System.out.print(new Solution().isValid("()"));
 	}
 	
-	/**改善可讀性
-	 * @param s
-	 * @return
-	 */
 	public boolean isValid(String s) {
-		if(s.length() % 2 > 0) {
+		if (s.length() <= 1 || s.length() % 2 != 0) {
 			return false;
 		}
-		
 		Stack<Character> stack = new Stack<>();
-		for(Character ch : s.toCharArray()) {
-			if(ch == '{' || ch == '[' || ch == '(') {
-				stack.push(ch);
-			}else {
-				if(stack.empty() || !check(stack.pop(), ch)) {
+		for (char c : s.toCharArray()) {
+			if (c == '(' || c == '[' || c == '{') {
+				stack.push(c);
+			} else {
+				if (stack.isEmpty()) {
+					return false;
+				}
+				if (c == ')' && stack.peek() == '(') {
+					stack.pop();
+				} else if (c == ']' && stack.peek() == '[') {
+					stack.pop();
+				} else if (c == '}' && stack.peek() == '{') {
+					stack.pop();
+				} else {
 					return false;
 				}
 			}
 		}
-		if(!stack.isEmpty()) {
-			return false;
-		}
-		return true;
+		return stack.isEmpty();
 	}
 	
-	private boolean check(Character pop, Character right) {
-		if(right == ')' && pop == '(') {
-			return true;
-		}else if(right == ']' && pop == '[') {
-			return true;
-		}else if(right == '}' && pop == '{') {
-			return true;
-		}
-		return false;
-	}
+	/**改善可讀性
+	 * @param s
+	 * @return
+	 */
+//	public boolean isValid(String s) {
+//		if(s.length() % 2 > 0) {
+//			return false;
+//		}
+//		
+//		Stack<Character> stack = new Stack<>();
+//		for(Character ch : s.toCharArray()) {
+//			if(ch == '{' || ch == '[' || ch == '(') {
+//				stack.push(ch);
+//			}else {
+//				if(stack.empty() || !check(stack.pop(), ch)) {
+//					return false;
+//				}
+//			}
+//		}
+//		if(!stack.isEmpty()) {
+//			return false;
+//		}
+//		return true;
+//	}
+//	
+//	private boolean check(Character pop, Character right) {
+//		if(right == ')' && pop == '(') {
+//			return true;
+//		}else if(right == ']' && pop == '[') {
+//			return true;
+//		}else if(right == '}' && pop == '{') {
+//			return true;
+//		}
+//		return false;
+//	}
 	
 	
 	
