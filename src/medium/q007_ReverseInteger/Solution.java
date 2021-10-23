@@ -1,4 +1,4 @@
-package easy.q007_ReverseInteger;
+package medium.q007_ReverseInteger;
 
 //https://leetcode.com/problems/reverse-integer/
 public class Solution {

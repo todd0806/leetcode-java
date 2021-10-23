@@ -13,27 +13,26 @@ public class Solution {
 			return 0;
 		}
 
-		Queue<TreeNode> stack = new LinkedList<>();
-		stack.offer(root);
-		int count = 1;
-		while (!stack.isEmpty()) {
-			int size = stack.size();
+		int ans = 1;
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.add(root);
+		while (!queue.isEmpty()) {
+			int size = queue.size();
 			for (int i = 0; i < size; i++) {
-				TreeNode node = stack.poll();
+				TreeNode node = queue.poll();
 				if (node.left == null && node.right == null) {
-					return count;
+					return ans;
 				}
 				if (node.left != null) {
-					stack.offer(node.left);
+					queue.add(node.left);
 				}
-
 				if (node.right != null) {
-					stack.offer(node.right);
+					queue.add(node.right);
 				}
 			}
-			count++;
+			ans++;
 		}
-		return count - 1;
+		return ans;
 	}
 	
 //	public int minDepth(TreeNode root) {

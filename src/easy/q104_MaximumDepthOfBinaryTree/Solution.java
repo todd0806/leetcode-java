@@ -18,7 +18,6 @@ public class Solution {
 		}
 		int leftHeight = maxDepth(root.left);
 		int rightHeight = maxDepth(root.right);
-		int maxHeight = Math.max(leftHeight, rightHeight) + 1;
-		return maxHeight;
+		return Math.max(leftHeight, rightHeight) + 1;
 	}
 }

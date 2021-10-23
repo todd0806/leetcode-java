@@ -12,19 +12,35 @@ public class Solution {
 	}
 	
 	public int removeDuplicates(int[] nums) {
-		// num, count
-		HashMap<Integer, Integer> map = new HashMap<>();
-		int left = 0;
-		for (int i = 0; i < nums.length; i++) {
-			int count = map.getOrDefault(nums[i], 0);
-			if (count == 0) {
-				nums[left] = nums[i];
-				map.put(nums[i], 1);
-				left++;
+		if (nums.length <= 1) {
+			return nums.length;
+		}
+
+		int left = 1;
+		int oldValue = nums[0];
+		for (int i = 1; i < nums.length; i++) {
+			if (oldValue != nums[i]) {
+				nums[left++] = nums[i];
+				oldValue = nums[i];
 			}
 		}
 		return left;
 	}
+	
+//	public int removeDuplicates(int[] nums) {
+//		// num, count
+//		HashMap<Integer, Integer> map = new HashMap<>();
+//		int left = 0;
+//		for (int i = 0; i < nums.length; i++) {
+//			int count = map.getOrDefault(nums[i], 0);
+//			if (count == 0) {
+//				nums[left] = nums[i];
+//				map.put(nums[i], 1);
+//				left++;
+//			}
+//		}
+//		return left;
+//	}
 	
 //	public static int removeDuplicates(int[] nums) {
 //		if(nums.length == 0) {

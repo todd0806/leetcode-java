@@ -8,19 +8,33 @@ public class Solution {
 		int[] nums = { 0, 1, 2, 2, 3, 0, 4, 2 };
 		System.out.print(new Solution().removeElement(nums, 2));
 	}
-
+	
 	public int removeElement(int[] nums, int val) {
-		int ans = nums.length;
+		if (nums.length == 0) {
+			return 0;
+		}
+
 		int left = 0;
 		for (int i = 0; i < nums.length; i++) {
-			if (nums[i] == val) {
-				ans--;
-			} else {
+			if (nums[i] != val) {
 				nums[left++] = nums[i];
 			}
 		}
-		return ans;
+		return left;
 	}
+
+//	public int removeElement(int[] nums, int val) {
+//		int ans = nums.length;
+//		int left = 0;
+//		for (int i = 0; i < nums.length; i++) {
+//			if (nums[i] == val) {
+//				ans--;
+//			} else {
+//				nums[left++] = nums[i];
+//			}
+//		}
+//		return ans;
+//	}
 
 //	public static int removeElement(int[] nums, int val) {
 //		int ans = 0;

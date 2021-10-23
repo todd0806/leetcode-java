@@ -9,6 +9,25 @@ public class Solution {
 	public static void main(String[] args) {
 		new Solution().mySqrt(8);
 	}
+
+	//https://leetcode.com/problems/sqrtx/discuss/402730/sqrt(x)-Binary-Search-Solution-with-Explanation
+	public int mySqrt(int x) {
+		if(x <= 1) {
+			return x;
+		}
+		int left = 0; 
+		int right = x / 2;
+		while(left <= right){
+			int mid = left + (right - left) / 2;
+			if((long)mid * mid > x){
+				right = mid - 1;
+			}else{
+				left = mid + 1;
+			}
+		}
+		return right;
+		
+	}
 	
 	/**牛頓迭代
 	 * https://leetcode-cn.com/problems/valid-perfect-square/solution/you-xiao-de-wan-quan-ping-fang-shu-by-leetcode/
@@ -16,18 +35,18 @@ public class Solution {
 	 * @param x
 	 * @return
 	 */
-	public int mySqrt(int x) {
-		if(x == 0 || x == 1) {
-			return x;
-		}
-		
-		long sqrt = x / 2;
-		while(sqrt * sqrt > x) {
-			sqrt = (sqrt + x/sqrt) / 2;
-		}
-		return (int)sqrt;
-	}
-	
+//	public int mySqrt(int x) {
+//		if(x == 0 || x == 1) {
+//			return x;
+//		}
+//		
+//		long sqrt = x / 2;
+//		while(sqrt * sqrt > x) {
+//			sqrt = (sqrt + x/sqrt) / 2;
+//		}
+//		return (int)sqrt;
+//	}
+//	
 	/**二分查找
 	 * https://leetcode-cn.com/problems/sqrtx/solution/er-fen-cha-zhao-fa-7xing-100-by-climite-4ejm/
 	 * @param x
