@@ -1,11 +1,8 @@
 package medium.q047_PermutationsII;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @author Todd
@@ -16,43 +13,31 @@ public class Solution {
 		new Solution().permuteUnique(new int[] {1, 1, 2});
 	}
 	
-	List<List<Integer>> result = new ArrayList<>();
-	HashSet<String> resultSet = new HashSet<>();
-
 	public List<List<Integer>> permuteUnique(int[] nums) {
-		LinkedList<Integer> track = new LinkedList<>();
-		boolean[] used = new boolean[nums.length];
-		backtrack(nums, track, used);
-		return result;
+		List<List<Integer>> list = new ArrayList<>();
+		Arrays.sort(nums);
+		backtrack(list, new ArrayList<>(), nums, new boolean[nums.length]);
+		return list;
 	}
 
-	private void backtrack(int[] nums, LinkedList<Integer> track, boolean[] used) {
-		if (track.size() == nums.length) {
-			String item = String.join(",", track.stream().map(Object::toString).collect(Collectors.toList()));
-
-			if (!resultSet.contains(item)) {
-				result.add(new ArrayList<>(track));
-				resultSet.add(item);
+	private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, boolean[] used) {
+		if (tempList.size() == nums.length) {
+			list.add(new ArrayList<>(tempList));
+		} else {
+			for (int i = 0; i < nums.length; i++) {
+				if (used[i])
+					continue;
+				// 剪枝
+				if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])
+					continue;
+				used[i] = true;
+				tempList.add(nums[i]);
+				backtrack(list, tempList, nums, used);
+				used[i] = false;
+				tempList.remove(tempList.size() - 1);
 			}
-		}
-
-		for (int i = 0; i < nums.length; i++) {
-			if (used[i]) {
-				continue;
-			}
-			// 剪枝
-			if (i > 0 && nums[i - 1] == nums[i] && used[i - 1] == true) {
-				continue;
-			}
-
-			used[i] = true;
-			track.add(nums[i]);
-			backtrack(nums, track, used);
-			track.removeLast();
-			used[i] = false;
 		}
 	}
-	
 	/**
 	 * 
 	 * @param nums
